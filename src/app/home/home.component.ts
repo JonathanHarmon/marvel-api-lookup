@@ -17,11 +17,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getMethod();
   }
 
   public getMethod(){
-    this.http.get(this.apiUrl);
+    this.http.get(this.apiUrl).subscribe((data) => {
+      console.log(data);
+      this.getJsonValue = data;
+    });
   }
 
 }
