@@ -7,21 +7,20 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiConnectorService {
 
+  apiUrl = 'http://gateway.marvel.com/v1/public/characters?';
   apiKey = environment.apiKey;
   public getJsonValue: any;
   public postJsonValue: any;
-  constructor(private http: HttpClient){
-
-  }
-
-
+  constructor(private http: HttpClient){}
 
   public getCharacters(){
-    this.http.get(`http://gateway.marvel.com/v1/public/characters?${this.apiKey}`).subscribe((data) => {
+    this.http.get(`${this.apiUrl}${this.apiKey}`).subscribe((data) => {
       console.log(data);
       this.getJsonValue = data;
     });
   }
+
+
 }
 
 
