@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component'
+import { CharacterListComponent } from './components/character-list/character-list.component';
+import { CharacterDetailComponent } from './components/character-detail/character-detail.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    CharacterListComponent,
+    CharacterDetailComponent
   ],
   imports: [
     BrowserModule,
