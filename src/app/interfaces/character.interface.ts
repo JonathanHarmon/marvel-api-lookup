@@ -1,4 +1,4 @@
-export interface Summary {
+export interface Character {
   characterId: number;
   name: string;
   description: string;
