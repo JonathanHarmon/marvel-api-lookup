@@ -10,8 +10,7 @@ export class ApiConnectorService {
 
   apiUrl: string = 'http://gateway.marvel.com/v1/public/characters?';
   apiKey: string = environment.apiKey;
-  public getJsonValue: any;
-  public postJsonValue: any;
+
   constructor(private http: HttpClient){}
 
   public getCharacters(keyword:string): Observable<any> {
