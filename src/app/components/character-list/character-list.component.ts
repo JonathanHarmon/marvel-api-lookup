@@ -6,13 +6,18 @@ import { ApiConnectorService } from 'src/app/services/api-connector.service';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit{
+  results: any;
 
   constructor(private apiConnectorService: ApiConnectorService){}
 
+  allCharacters:any=[];
+  showSearchResult!: boolean;
+
   ngOnInit(): void {
+    this.showSearchResult=false;
       this.apiConnectorService.getCharacters('thor').subscribe(
-        (results:any) => {
-          console.log(results);
+        (result:any) => {
+          this.allCharacters = result.data.results;
         }
       )
   }
