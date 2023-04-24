@@ -11,11 +11,16 @@ export class CharacterListComponent implements OnInit{
   constructor(private apiConnectorService: ApiConnectorService){}
 
   allCharacters:any=[];
+  comics:any=[];
+  series:any=[];
+  showComicsDiv!: boolean;
+  showSeriesDiv!: boolean;
+  characterName!: string;
   showSearchResult!: boolean;
 
   ngOnInit(): void {
     this.showSearchResult=false;
-      this.apiConnectorService.getCharacters('thor').subscribe(
+      this.apiConnectorService.getAllCharacters().subscribe(
         (result:any) => {
           this.allCharacters = result.data.results;
         }

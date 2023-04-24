@@ -1,9 +1,13 @@
-<p>character-list works!</p>
 
-<div class="col-lg-3 mt-3 mb-3" *ngFor="let characters of allCharacters">
-  <div class="card">
-    <p>{{ characters.name }}</p>
-  <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
-  </div>
-
+<div class="container-fluid mt-5">
+<h1>Marvel Characters Lookup</h1>
+    <div class="row">
+      <div class="col-lg-3 mt-3 mb-3" *ngFor="let characters of allCharacters">
+        <div class="card">
+          <h2>{{ characters.name }}</h2>
+          <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
+          <p>{{ characters.description }}</p>
+        </div>
+      </div>
+    </div>
 </div>
