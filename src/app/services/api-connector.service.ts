@@ -23,11 +23,11 @@ export class ApiConnectorService {
     return this.http.get<any>(`${this.apiUrl}characters?nameStartsWith=${keyword}&${this.apiKey}`)
   }
 
-  public getComics(characterId:string): Observable<any> {
+  public getComicsByCharacter(characterId:string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}characters/${characterId}/comics?${this.apiKey}`)
   }
 
-  public getSeries(characterId:string): Observable<any> {
+  public getSeriesByCharacter(characterId:string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}characters/${characterId}/series?${this.apiKey}`)
   }
 }

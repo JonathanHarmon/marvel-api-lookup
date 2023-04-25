@@ -1,13 +1,48 @@
-
 <div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-lg-6">
+
+    </div>
+    <div class="col-lg-3">
+      <input class="form-control mr-sm-2" type="text"
+      required name='characterName' id='characterName'
+      placeholder="Search" aria-label="Search" (keyup)="searchByKeyword($event)">
+    </div>
+    <div class="col-lg-3">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5" *ngIf="!showSearchResult">
 <h1>Marvel Characters Lookup</h1>
     <div class="row">
       <div class="col-lg-3 mt-3 mb-3" *ngFor="let characters of allCharacters">
         <div class="card">
+          <div class="card-body">
           <h2>{{ characters.name }}</h2>
           <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
           <p>{{ characters.description }}</p>
+          <h5 class="card-title">{{ characters.name }}</h5>
+          <button type="button" (click)="fetchComicsByCharacter(characters.id)" class="btn btn-outline-primary  mr-4" data-toggle="modal" data-target=".bd-example-modal-lg">Comics</button>
+          <button type="button" (click)="searchByKeyword(characters.id)" class="btn btn-outline-secondary" data-toggle="modal" data-target=".cd-example-modal-lg">Series</button>
+        </div>
         </div>
       </div>
     </div>
+</div>
+
+<div class="container-fluid mt-5" *ngIf="showSearchResult">
+  <h4>Marvel Characters</h4>
+  <div class="row">
+    <div class="col-lg-3 mt-3 mb-3" *ngFor="let characters of searchedCharacter">
+      <div class="card">
+        <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ characters.name }}</h5>
+          <button type="button" (click)="fetchComicsByCharacter(characters.id)" class="btn btn-outline-primary  mr-4" data-toggle="modal" data-target=".bd-example-modal-lg">Comics</button>
+          <button type="button" (click)="searchByKeyword(characters.id)" class="btn btn-outline-secondary" data-toggle="modal" data-target=".cd-example-modal-lg">Series</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

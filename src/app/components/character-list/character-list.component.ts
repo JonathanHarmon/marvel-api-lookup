@@ -15,10 +15,13 @@ export class CharacterListComponent implements OnInit{
   series:any=[];
   showComicsDiv!: boolean;
   showSeriesDiv!: boolean;
-  characterName!: string;
+  keyWord!: string;
   showSearchResult!: boolean;
+  searchedCharacter:any=[];
 
   ngOnInit(): void {
+    this.showComicsDiv = false;
+    this.showSeriesDiv = false;
     this.showSearchResult=false;
       this.apiConnectorService.getAllCharacters().subscribe(
         (result:any) => {
@@ -26,5 +29,38 @@ export class CharacterListComponent implements OnInit{
         }
       )
   }
+
+  searchByKeyword(event:any)
+{
+   this.keyWord = event.target.value;
+   this.apiConnectorService.getCharacterByKeyword(this.keyWord).subscribe((result)=>{
+     console.log(result);
+     if(result.data.count>0)
+     {
+       this.showSearchResult = true;
+       this.searchedCharacter = result.data.results;
+     }
+     else{
+
+       this.ngOnInit();
+     }
+   })
+}
+
+fetchComicsByCharacter(characterId:string)
+  {
+    console.log(characterId);
+    this.apiConnectorService.getComicsByCharacter(characterId).subscribe((result)=>{
+      //console.log(result);
+
+      if(result.data.count>0)
+      {
+        this.comics = result.data.results;
+        this.showComicsDiv = true;
+      }
+    })
+  }
+
+
 
 }
