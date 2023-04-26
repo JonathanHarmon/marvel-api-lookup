@@ -74,4 +74,9 @@ fetchComicsByCharacter(characterId:string)
     })
   }
 
+  clearValues() {
+    this.showComicsDiv = false;
+    this.showSeriesDiv = false;
+  }
+
 }
