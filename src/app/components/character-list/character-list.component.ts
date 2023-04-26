@@ -60,7 +60,18 @@ fetchComicsByCharacter(characterId:string)
       }
     })
   }
+  fetchSeriesByCharacter(characterId:string)
+  {
+    console.log(characterId);
+    this.apiConnectorService.getSeriesByCharacter(characterId).subscribe((result)=>{
+      console.log(result);
 
-
+      if(result.data.count>0)
+      {
+        this.series = result.data.results;
+        this.showSeriesDiv = true;
+      }
+    })
+  }
 
 }

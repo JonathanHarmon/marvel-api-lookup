@@ -24,7 +24,7 @@
           <p>{{ characters.description }}</p>
           <h5 class="card-title">{{ characters.name }}</h5>
           <button type="button" (click)="fetchComicsByCharacter(characters.id)" class="btn btn-outline-primary  mr-4" data-toggle="modal" data-target=".bd-example-modal-lg">Comics</button>
-          <button type="button" (click)="searchByKeyword(characters.id)" class="btn btn-outline-secondary" data-toggle="modal" data-target=".cd-example-modal-lg">Series</button>
+          <button type="button" (click)="fetchSeriesByCharacter(characters.id)" class="btn btn-outline-secondary" data-toggle="modal" data-target=".cd-example-modal-lg">Series</button>
         </div>
         </div>
       </div>
@@ -39,10 +39,50 @@
         <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
         <div class="card-body">
           <h5 class="card-title">{{ characters.name }}</h5>
-          <button type="button" (click)="fetchComicsByCharacter(characters.id)" class="btn btn-outline-primary  mr-4" data-toggle="modal" data-target=".bd-example-modal-lg">Comics</button>
-          <button type="button" (click)="searchByKeyword(characters.id)" class="btn btn-outline-secondary" data-toggle="modal" data-target=".cd-example-modal-lg">Series</button>
+          <button type="button" (click)="fetchComicsByCharacter(characters.id)" class="btn btn-outline-primary  mr-4" data-bs-toggle="modal" data-bs-target="#comicsmodal">Comics</button>
+          <button type="button" (click)="fetchSeriesByCharacter(characters.id)" class="btn btn-outline-secondary" data-toggle="modal" data-target=".cd-example-modal-lg">Series</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="modal fade bd-example-modal-lg" id="comicsmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Comics</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row" *ngIf='showComicsDiv'>
+            <div
+              class="col-lg-3 mt-3 mb-3"
+              *ngFor="let c of comics"
+            >
+              <div class="card">
+                <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
+                <div class="card-body">
+                  <h5 class="card-title">{{ c.title }}</h5>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div *ngIf='!showComicsDiv'>
+            <h4> No Comics For this Character </h4>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+
+    </div>
+  </div>
+  </div>
