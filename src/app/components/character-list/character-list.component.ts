@@ -51,7 +51,7 @@ fetchComicsByCharacter(characterId:string)
   {
     console.log(characterId);
     this.apiConnectorService.getComicsByCharacter(characterId).subscribe((result)=>{
-      //console.log(result);
+      console.log(result);
 
       if(result.data.count>0)
       {
