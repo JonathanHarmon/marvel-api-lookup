@@ -10,7 +10,7 @@ import { Observable} from 'rxjs';
 })
 export class ApiConnectorService {
 
-  apiUrl: string = 'http://gateway.marvel.com/v1/public/';
+  apiUrl: string = 'https://gateway.marvel.com/v1/public/';
   apiKey: string = environment.apiKey;
 
   constructor(private http: HttpClient){}
